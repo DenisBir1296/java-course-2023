@@ -6,7 +6,7 @@ public class Task6 {
     static boolean isPalindromeDescendant(int numb)
     {
         int count = Task3.countDigits(numb);// получили количество цифр
-        boolean flag = true;
+        boolean flag;
        int[] Digits = new int[count];
         for(int i = count - 1; i > -1; i--){
             Digits[i] = numb % 10;

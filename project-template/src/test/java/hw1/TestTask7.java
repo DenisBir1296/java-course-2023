@@ -1,7 +1,6 @@
 package hw1;
 
 import org.junit.jupiter.api.Test;
-import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestTask7 {
