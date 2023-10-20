@@ -1,22 +1,11 @@
 package hw1;
 
+import java.util.Arrays;
+import java.util.OptionalInt;
+
 public class Task4 {
     static boolean isNestable(int[] a, int[] b){
-
-        boolean flag = false;
-
-        if(b.length > a.length)
-        {
-            int[] c = a;
-            a = b;
-            b = c;
-        }
-
-        for(int i = 0; (!flag) && (i <= (a.length - b.length)); i++){
-            flag = true;
-            for(int j = 0; flag && j < b.length; j++)
-                flag = a[i + j] == b[j];
-        }
+        boolean flag = Arrays.stream(a).min().getAsInt() > Arrays.stream(b).min().getAsInt() && Arrays.stream(a).max().getAsInt() < Arrays.stream(b).max().getAsInt();
         return flag;
     }
 }

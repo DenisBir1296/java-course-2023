@@ -14,7 +14,7 @@ public class Task9 {
                         y_ = y + coordinateOffset[i][1];
                         if(x_ > 0 && x_ < board.length && y_ > 0 && y_ < board[0].length)
                             flag = board[x][y] != board[x_][y_];
-                };
+                }
         return flag;
     }
 }

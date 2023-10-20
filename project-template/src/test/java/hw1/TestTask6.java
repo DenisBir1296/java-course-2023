@@ -1,12 +1,16 @@
 package hw1;
 
 import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestTask6 {
 
     @Test
     void testIsPalindromeDescendant()
     {
-        System.out.println(Task6.isPalindromeDescendant(11 ));
+        assertThat(Task6.isPalindromeDescendant(23336014)).isEqualTo(true);
+        assertThat(Task6.isPalindromeDescendant(23336014)).isEqualTo(true);
+        assertThat(Task6.isPalindromeDescendant(4850)).isEqualTo(false);
     }
+
 }
