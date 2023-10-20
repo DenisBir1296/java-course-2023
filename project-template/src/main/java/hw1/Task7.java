@@ -2,18 +2,18 @@ package hw1;
 
 import java.util.Arrays;
 
-
 public class Task7 {
 
     static final int[] K_ = new int[] {4, 7, 1, 6};
-    static int K(int numb)
-    {
-        if (numb <= 1000 || numb > 9999)
+
+    static int K(int numb) {
+        if (numb <= 1000 || numb > 9999) {
             return -1;
+        }
         int count = 0;
         final int countOfDigits = 4;
         int[] Digits = new int[countOfDigits];
-        for(int i = countOfDigits - 1; i > -1; i--){
+        for (int i = countOfDigits - 1; i > -1; i--) {
             Digits[i] = numb % 10;
             numb /= 10;
         }
