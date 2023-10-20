@@ -1,7 +1,5 @@
 package hw1;
 
-import java.util.Arrays;
-
 public class Task6 {
     static boolean isPalindromeDescendant(int numb) {
         int count = Task3.countDigits(numb);// получили количество цифр
