@@ -8,7 +8,8 @@ public class TestTask3 {
 
     @Test
     void TestPopularCommandExecutor() {
-        // с некоторой вероятностью происходят ошибки
+        // ConnectionException бросается с вероятностью 1/3
+        // Вероятность возврата проблемного соединения из DefaultConnectionManager равна 1/2
         PopularCommandExecutor cl = new PopularCommandExecutor(new FaultyConnectionManager(), 3);
         try {
             cl.updatePackages();
