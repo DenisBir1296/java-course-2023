@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Task6 {
 
-    private static List<Integer> getDigits(int numb){
+    private static List<Integer> getDigits(int numb) {
         List<Integer> Digits = new LinkedList<>();
         do {
             Digits.add(numb % 10);
@@ -28,7 +28,7 @@ public class Task6 {
             if ((Digits.size() & 1) == 1 || flag) {
                 break;
             }
-            for (int i = 0; i < Digits.size();) {
+            for (int i = 0; i < Digits.size(); ) {
                 buff = getDigits(Digits.remove(i) + Digits.remove(i));
                 Digits.addAll(i, buff);
                 i += buff.size();
