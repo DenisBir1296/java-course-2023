@@ -1,31 +1,39 @@
 package hw1;
 
-import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 
 public class Task6 {
-    static boolean isPalindromeDescendant(int numb) {
-        int count = Task3.countDigits(numb);// получили количество цифр
-        boolean flag;
-        int[] Digits = new int[count];
-        for (int i = count - 1; i > -1; i--) {
-            Digits[i] = numb % 10;
-            numb /= 10;
-        }
 
-        while (true) {
+    private static List<Integer> getDigits(int numb) {
+        List<Integer> Digits = new LinkedList<>();
+        do {
+            Digits.add(numb % 10);
+            numb /= 10;
+        } while (numb > 0);
+        return Digits;
+    }
+
+    static boolean isPalindromeDescendant(int numb) {
+        boolean flag = false;
+        List<Integer> buff;
+        List<Integer> Digits = getDigits(numb);
+        while (Digits.size() > 1) {
             flag = true;
-            for (int i = 0; flag && i < count / 2; i++) {
-                flag = Digits[i] == Digits[count - i - 1];
+            for (int i = 0; flag && i < Digits.size() / 2; i++) {
+                flag = Digits.get(i).equals(Digits.get(Digits.size() - i - 1));
             }
-            if (count == 2 || flag) {
+            if ((Digits.size() & 1) == 1 || flag) {
                 break;
             }
-            count /= 2;
-            for (int i = 0; i < count; i++) {
-                Digits[i] = Digits[2 * i] + Digits[2 * i + 1];
+            for (int i = 0; i < Digits.size(); ) {
+                buff = getDigits(Digits.remove(i) + Digits.remove(i));
+                Digits.addAll(i, buff);
+                i += buff.size();
             }
         }
-
         return flag;
     }
 }

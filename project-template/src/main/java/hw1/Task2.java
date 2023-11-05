@@ -1,5 +1,7 @@
 package hw1;
 
+// нумерация заданий с 1, а не с 0
+
 public class Task2 {
     static int minutesToSeconds(String time) {
         int minutes, seconds;

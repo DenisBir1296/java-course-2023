@@ -1,36 +1,50 @@
 package hw1;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class Task7 {
 
-    static final int[] K_ = new int[] {4, 7, 1, 6};
+    static final int K_ = 6174;
+    static final int countOfDigits = 4;
 
-    static int K(int numb) {
-        if (numb <= 1000 || numb > 9999) {
-            return -1;
-        }
-        int count = 0;
-        final int countOfDigits = 4;
+    private static int[] getDigits(int numb) {
         int[] Digits = new int[countOfDigits];
-        for (int i = countOfDigits - 1; i > -1; i--) {
+        for (int i = 0; i < countOfDigits; i++) {
             Digits[i] = numb % 10;
             numb /= 10;
         }
+        return Digits;
+    }
 
-        while (!Arrays.equals(Digits, K_)) {
-            Arrays.sort(Digits);
-            int[] DigitsCopy = Digits.clone();
-
-            for (int i = 0; i < countOfDigits; i++) {
-                Digits[i] -= DigitsCopy[countOfDigits - i - 1];
-                if (Digits[i] < 0) {
-                    Digits[i] += 10;
-                    Digits[i + 1] -= 1;
-                }
-            }
-            count++;
+    private static int getValueFromDigits(int[] Digits) {
+        int val = 0;
+        int multiplier = 1;
+        for (int i = 0; i < countOfDigits; i++) {
+            val += Digits[i] * multiplier;
+            multiplier *= 10;
         }
-        return count;
+        return val;
+    }
+
+    static int K(int numb) {
+        int[] Digits = getDigits(numb);
+
+        Arrays.sort(Digits);
+        numb = getValueFromDigits(Digits);
+
+        int buff;
+        for (int i = 0; i < countOfDigits / 2; i++) {
+            buff = Digits[i];
+            Digits[i] = Digits[countOfDigits - i - 1];
+            Digits[countOfDigits - i - 1] = buff;
+        }
+        numb -= getValueFromDigits(Digits);
+
+        if (numb == K_) {
+            return 1;
+        }
+
+        return 1 + K(numb);
     }
 }
